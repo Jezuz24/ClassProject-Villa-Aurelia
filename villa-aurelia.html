@@ -36,7 +36,7 @@
 
   <!-- Booking page hero -->
   <section class="relative h-[320px] sm:h-[360px] md:h-[400px] bg-cover bg-center flex items-center justify-center"
-    style="background-image: url('banner.png');">
+    style="background-image: url('images/hero/banner.png');">
 
     <!-- Overlay -->
     <div class="absolute inset-0 bg-black/60"></div>
@@ -100,8 +100,15 @@
         </select>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <input id="checkin" type="date" class="input-focus w-full p-3 border rounded-lg">
-          <input id="checkout" type="date" class="input-focus w-full p-3 border rounded-lg">
+          <div>
+            <label class="block text-stone-600 mb-1">Check-in Date</label>
+            <input id="checkin" type="date" class="input-focus w-full p-3 border rounded-lg">
+          </div>
+
+          <div>
+            <label class="block text-stone-600 mb-1">Check-out Date</label>
+            <input id="checkout" type="date" class="input-focus w-full p-3 border rounded-lg">
+          </div>
         </div>
 
         <input id="guests" type="number" min="1" placeholder="Number of Guests" class="input-focus w-full p-3 border rounded-lg">
@@ -119,3 +126,4 @@
   </footer>
 </body>
 </html>
+
