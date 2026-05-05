@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Villa Aurelia - Account</title>
+
+  <!-- Tailwind CSS CDN for utility classes -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Custom stylesheet for the Villa Aurelia theme -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Main JavaScript file for validation, login, booking, and dashboard behavior -->
+  <script src="validation.js" defer></script>
+</head>
+<body class="bg-stone-100 text-stone-900">
+  <!-- Navigation bar used across the whole hotel website -->
+  <header class="bg-slate-950/95 text-stone-100 px-4 sm:px-6 md:px-8 py-4 md:py-5 border-b border-emerald-800/50">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row gap-4 justify-between items-center">
+      <h1 class="text-xl sm:text-2xl font-bold tracking-wide text-emerald-300">Villa Aurelia</h1>
+
+      <nav class="flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-4 text-xs sm:text-sm">
+        <a href="index.html" class="hover:text-emerald-300">Home</a>
+        <a href="villa-aurelia.html" class="hover:text-emerald-300">Booking</a>
+        <a href="AboutUs.html" class="hover:text-emerald-300">About Us</a>
+        <a href="Amenities.html" class="hover:text-emerald-300">Amenities</a>
+        <a href="GuestReviews.html" class="hover:text-emerald-300">Guest Reviews</a>
+        <a href="CustomerService.html" class="hover:text-emerald-300">Customer Service</a>
+        <a href="Account.html" class="text-emerald-300">Account</a>
+        <a href="Profile.html" class="hover:text-emerald-300">Profile</a>
+        <span id="navUser" class="text-emerald-300 font-bold"></span>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Account page hero -->
+    <section class="relative h-[320px] sm:h-[360px] md:h-[400px] bg-cover bg-center flex items-center justify-center"
+      style="background-image: url('images/hero/banner.png');">
+
+      <!-- Overlay -->
+      <div class="absolute inset-0 bg-black/60"></div>
+
+      <!-- Content -->
+      <div class="relative z-10 text-center text-white">
+        <p class="uppercase tracking-[0.3em] text-emerald-300">
+          Your Account
+        </p>
+
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mt-4">
+          Login or create an account to continue.
+        </h1>
+      </div>
+    </section>
+
+    <!-- Account options section -->
+    <section class="py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-8 bg-gradient-to-br from-green-800 via-slate-600 to-emerald-800">
+      <div class="max-w-6xl mx-auto text-center">
+
+        <!-- Section Title -->
+        <h2 class="text-2xl sm:text-3xl font-bold text-white mb-3">
+          Welcome to Villa Aurelia
+        </h2>
+
+        <p class="text-stone-300 mb-12">
+          Access your account or create a new one to begin your luxury experience.
+        </p>
+
+        <!-- Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-md sm:max-w-2xl md:max-w-4xl mx-auto">
+
+            <!-- Login Card -->
+          <div class="bg-white/80 backdrop-blur-lg p-6 sm:p-8 md:p-10 rounded-3xl shadow-2xl border border-white/40 hover:scale-105 transition">
+            <h3 class="text-2xl font-bold mb-4 text-slate-900">Already have an account?</h3>
+            <p class="text-stone-600 mb-6">
+              Login to access your bookings, profile, and stay details.
+            </p>
+
+            <button onclick="openLoginModal()"
+              class="bg-emerald-700 text-white px-6 py-3 rounded-xl hover:bg-emerald-800">
+              Login
+            </button>
+          </div>
+
+          <!-- Register Card -->
+          <div class="bg-white/80 backdrop-blur-lg p-6 sm:p-8 md:p-10 rounded-3xl shadow-2xl border border-white/40 hover:scale-105 transition">
+            <h3 class="text-2xl font-bold mb-4 text-slate-900">New here?</h3>
+            <p class="text-stone-600 mb-6">
+              Create an account to book rooms and manage your stay.
+            </p>
+
+            <a href="Registration.html"
+              class="inline-block bg-blue-700 text-white px-6 py-3 rounded-xl hover:bg-blue-800">
+              Create Account
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  <!-- Login modal popup -->
+  <div id="loginModal" class="hidden fixed inset-0 bg-black/70 flex items-center justify-center z-50">
+    <div class="bg-white rounded-3xl shadow-2xl p-8 max-w-md w-full mx-4">
+      <h3 class="text-2xl font-bold text-center mb-6">Login</h3>
+
+      <input id="loginEmail" type="email" placeholder="Email Address" 
+        class="input-focus w-full p-3 border rounded-lg mb-4">
+      <input id="loginPassword" type="password" placeholder="Password" 
+        class="input-focus w-full p-3 border rounded-lg mb-4">
+
+      <button type="button" onclick="loginUser()" 
+        class="w-full bg-emerald-700 text-white py-3 rounded-xl hover:bg-emerald-800">
+        Login
+      </button>
+      <button type="button" onclick="closeLoginModal()" 
+        class="w-full mt-3 bg-stone-300 text-stone-900 py-3 rounded-xl hover:bg-stone-400">
+        Cancel
+      </button>
+
+      <div id="loginResult" class="mt-5 text-center font-bold"></div>
+    </div>
+  </div>
+
+  <script>
+    // If the user is already logged in, send them directly to their profile.
+    window.addEventListener("load", function () {
+      if (localStorage.getItem("villaLoggedIn") === "true") {
+        window.location.href = "Profile.html";
+      }
+    });
+
+    // Open the login modal.
+    function openLoginModal() {
+      document.getElementById("loginModal").classList.remove("hidden");
+    }
+
+    // Close the login modal.
+    function closeLoginModal() {
+      document.getElementById("loginModal").classList.add("hidden");
+    }
+  </script>
+  
+  <!-- Footer -->
+  <footer class="bg-slate-950 text-stone-300 text-center py-6 border-t border-emerald-900">
+    <p>© 2026 Villa Aurelia Nature Hotel Booking System</p>
+  </footer>
+</body>
+</html>

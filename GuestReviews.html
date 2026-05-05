@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Villa Aurelia - Guest Reviews</title>
+
+  <!-- Tailwind CSS CDN for utility classes -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Custom stylesheet for the Villa Aurelia theme -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Main JavaScript file for validation, login, booking, and dashboard behavior -->
+  <script src="validation.js" defer></script>
+</head>
+<body class="bg-stone-100 text-stone-900">
+  <!-- Navigation bar used across the whole hotel website -->
+  <header class="bg-slate-950/95 text-stone-100 px-4 sm:px-6 md:px-8 py-4 md:py-5 border-b border-emerald-800/50">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row gap-4 justify-between items-center">
+      <h1 class="text-xl sm:text-2xl font-bold tracking-wide text-emerald-300">Villa Aurelia</h1>
+
+      <nav class="flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-4 text-xs sm:text-sm">
+        <a href="index.html" class="hover:text-emerald-300">Home</a>
+        <a href="villa-aurelia.html" class="hover:text-emerald-300">Booking</a>
+        <a href="AboutUs.html" class="hover:text-emerald-300">About Us</a>
+        <a href="Amenities.html" class="hover:text-emerald-300">Amenities</a>
+        <a href="GuestReviews.html" class="text-emerald-300">Guest Reviews</a>
+        <a href="CustomerService.html" class="hover:text-emerald-300">Customer Service</a>
+        <a href="Account.html" class="hover:text-emerald-300">Account</a>
+        <a href="Profile.html" class="hover:text-emerald-300">Profile</a>
+        <span id="navUser" class="text-emerald-300 font-bold"></span>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Reviews hero -->
+  <section class="relative h-[320px] sm:h-[360px] md:h-[400px] bg-cover bg-center flex items-center justify-center"
+    style="background-image: url('images/hero/banner.png');">
+
+    <!-- Overlay -->
+    <div class="absolute inset-0 bg-black/60"></div>
+
+    <!-- Content -->
+    <div class="relative z-10 text-center text-white">
+      <p class="uppercase tracking-[0.3em] text-emerald-300 font-semibold">Guest Feedback</p>
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mt-4 glow-text">Guest Reviews</h2>
+    </div>  
+  </section>
+
+  <!-- Sample reviews -->
+  <section class="py-12 md:py-16 px-4 sm:px-6 md:px-8 bg-gradient-to-br from-gray-400 via-slate-500 to-gray-400 overflow-hidden">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="bg-teal-100 p-6 rounded-2xl shadow border border-emerald-100">
+        <p class="text-emerald-600 text-xl">★★★★★</p>
+        <h3 class="font-bold text-lg mt-2">Maria G.</h3>
+        <p class="text-stone-600 mt-3">Beautiful botanical design and an easy booking experience.</p>
+      </div>
+
+      <div class="bg-teal-100 p-6 rounded-2xl shadow border border-emerald-100">
+        <p class="text-emerald-600 text-xl">★★★★★</p>
+        <h3 class="font-bold text-lg mt-2">John D.</h3>
+        <p class="text-stone-600 mt-3">Exceptional service and a wonderful stay at the villa.</p>
+      </div>
+
+      <div class="bg-teal-100 p-6 rounded-2xl shadow border border-emerald-100">
+        <p class="text-emerald-600 text-xl">★★★★☆</p>
+        <h3 class="font-bold text-lg mt-2">Sofia M.</h3>
+        <p class="text-stone-600 mt-3">Great responsive design and helpful booking calculator.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Review submission form -->
+  <!-- Review submission form -->
+<section class="w-full bg-gradient-to-br from-slate-900 via-emerald-900 to-teal-900 px-4 sm:px-6 md:px-8 py-12 md:py-16">
+  <div class="max-w-md sm:max-w-2xl md:max-w-4xl mx-auto bg-white/90 backdrop-blur-lg rounded-3xl shadow-2xl p-6 sm:p-8 border border-emerald-200">
+    <h3 class="text-2xl font-bold text-center mb-6 text-slate-900">Leave a Review</h3>
+
+    <form class="space-y-4" onsubmit="return false;">
+      <input id="reviewName" type="text" placeholder="Your Name"
+        class="input-focus w-full p-3 border rounded-lg bg-white text-slate-900">
+
+      <select id="rating"
+        class="input-focus w-full p-3 border rounded-lg bg-white text-slate-900">
+        <option value="">Select Rating</option>
+        <option value="★★★★★">5 Stars</option>
+        <option value="★★★★☆">4 Stars</option>
+        <option value="★★★☆☆">3 Stars</option>
+        <option value="★★☆☆☆">2 Stars</option>
+        <option value="★☆☆☆☆">1 Star</option>
+      </select>
+
+      <textarea id="reviewText" rows="4" placeholder="Write your review"
+        class="input-focus w-full p-3 border rounded-lg bg-white text-slate-900"></textarea>
+
+      <button type="button" onclick="submitReview()"
+        class="w-full bg-emerald-700 text-white py-3 rounded-lg hover:bg-emerald-800">
+        Submit Review
+      </button>
+    </form>
+
+    <div id="reviewResult" class="mt-6"></div>
+  </div>
+</section>
+
+  <!-- Footer -->
+  <footer class="bg-slate-950 text-stone-300 text-center py-6 border-t border-emerald-900">
+    <p>© 2026 Villa Aurelia Nature Hotel Booking System</p>
+  </footer>
+</body>
+</html>
